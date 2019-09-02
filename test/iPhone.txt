@@ -1,0 +1,44 @@
+array(21) {
+  ["DOCUMENT_ROOT"]=>
+  string(25) "/home/mzh/code/php/urlGen"
+  ["REMOTE_ADDR"]=>
+  string(13) "122.70.43.239"
+  ["REMOTE_PORT"]=>
+  string(5) "62333"
+  ["SERVER_SOFTWARE"]=>
+  string(28) "PHP 7.3.6 Development Server"
+  ["SERVER_PROTOCOL"]=>
+  string(8) "HTTP/1.1"
+  ["SERVER_NAME"]=>
+  string(7) "0.0.0.0"
+  ["SERVER_PORT"]=>
+  string(4) "8065"
+  ["REQUEST_URI"]=>
+  string(253) "/redirect.php?nsukey=fCKBIYWH%2FBG%2FpS2yln3ChKYFLot4lbdagP9flIkF05u%2FCd%2Ffd6HTjHmhrFDxVn3KKn8fYQ4SJhtAlh5CMzGzp8MeAGjT7Gg8HiBCnCq0eJA%2FfR2EqftWfMyo1mozQaPO5ARnyWqpckbmrwE1V%2BEzDdXrq4juEukHYUKaMXAZrlO0Hzg0uR8y0xto9lCA9ExxNyXbkQVTDw3ztOMWum4bSg%3D%3D"
+  ["REQUEST_METHOD"]=>
+  string(3) "GET"
+  ["SCRIPT_NAME"]=>
+  string(13) "/redirect.php"
+  ["SCRIPT_FILENAME"]=>
+  string(38) "/home/mzh/code/php/urlGen/redirect.php"
+  ["PHP_SELF"]=>
+  string(13) "/redirect.php"
+  ["QUERY_STRING"]=>
+  string(239) "nsukey=fCKBIYWH%2FBG%2FpS2yln3ChKYFLot4lbdagP9flIkF05u%2FCd%2Ffd6HTjHmhrFDxVn3KKn8fYQ4SJhtAlh5CMzGzp8MeAGjT7Gg8HiBCnCq0eJA%2FfR2EqftWfMyo1mozQaPO5ARnyWqpckbmrwE1V%2BEzDdXrq4juEukHYUKaMXAZrlO0Hzg0uR8y0xto9lCA9ExxNyXbkQVTDw3ztOMWum4bSg%3D%3D"
+  ["HTTP_HOST"]=>
+  string(17) "47.93.27.106:8065"
+  ["HTTP_ACCEPT"]=>
+  string(63) "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+  ["HTTP_ACCEPT_LANGUAGE"]=>
+  string(5) "en-us"
+  ["HTTP_CONNECTION"]=>
+  string(10) "keep-alive"
+  ["HTTP_ACCEPT_ENCODING"]=>
+  string(17) "br, gzip, deflate"
+  ["HTTP_USER_AGENT"]=>
+  string(167) "Mozilla/5.0 (iPhone; CPU iPhone OS 12_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/7.0.5(0x17000523) NetType/WIFI Language/en"
+  ["REQUEST_TIME_FLOAT"]=>
+  float(1567081623.913)
+  ["REQUEST_TIME"]=>
+  int(1567081623)
+}

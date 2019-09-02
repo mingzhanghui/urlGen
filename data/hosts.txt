@@ -1,0 +1,11 @@
+# 监控主机名一行一个 #注释
+www.baidu.com
+www.sk666.vip
+# www.sk666.cc
+juejin.im
+www.kancloud.cn
+# zentao.jiandan100.cn
+gitee.com
+ctcms.cn
+www.ctcms.cn
+myaliyun.club:8087

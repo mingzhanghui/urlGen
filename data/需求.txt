@@ -1,0 +1,33 @@
+脚本需求：
+监控的域名请用txt文本格式一行一个
+1.访问网站随机跳转短网址
+
+2.短网址生成：
+
+3.中转域名：用TXT格式放一行一个，要求支持泛域名
+
+4.短网址跳转：安卓用户从微信/QQ打开强制用手机默认的浏览器开打
+    案例代码：https://blog.csdn.net/wolfgod971/article/details/88188943
+	ios:https://blog.csdn.net/gf771115/article/details/73177153,
+	https://blog.csdn.net/hbjixieyuan/article/details/55048644，
+	https://blog.csdn.net/gf771115/article/details/79127248
+
+5.检测微信/QQ是否被封：http://qbview.url.cn/getResourceInfo?appid=31&url=地址
+
+6.短网址访问
+      手机端：判断是否从微信/QQ内置浏览器打开，如果不是就跳转正常指定的页面，如果是就执行顺序到落地页
+      电脑端：判断是否蜘蛛或机器人，如果是蜘蛛或机器人就不跳转，如果不是蜘蛛或机器人就执行顺序到落地页
+
+7.短网址禁止
+      1.所有搜索引擎蜘蛛或伪造协议抓取
+      2.干掉python类爬虫(可按照日志python*，*python)
+      3.干掉获取落地页所有内容，防止被投诉机器人查封
+
+执行顺序：判断是手机端或电脑端-获取短网址-判断是否从QQ/微信内打开-获取中转地址并检测-随机取一条中转短网址-
+跳转落地页
+
+尽量提升一下执行速度
+
+
+
+判断qq内置浏览器和微信内置浏览器：https://blog.csdn.net/wodebokecsdn/article/details/82885259
