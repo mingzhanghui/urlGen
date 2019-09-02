@@ -18,6 +18,7 @@ File::forEachRow($path, function($line) use ($out, $log) {
     } catch (Exception $e) {
         fwrite($log, sprintf("[%s] %d: %s\n",
             $line, $e->getCode(), $e->getMessage()));
+        return 2;
     }
 
     printf("HOST=[%s]\tURL=[%s]\n", $line, $url);
