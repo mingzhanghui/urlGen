@@ -9,8 +9,9 @@
 class File {
 
     /**
-     * @param $path string
-     * @param $handler callable
+     * @param $path
+     * @param $handler
+     * @param string $comment
      * @throws Exception
      */
     public static function forEachRow($path, $handler, $comment = '#') {
