@@ -54,5 +54,6 @@ try {
     header("Location: ".$shortURL);
 } catch (Exception $e) {
     Response::fail($e->getMessage(), $e->getCode());
-    Logger::close();
 }
+
+Logger::close();

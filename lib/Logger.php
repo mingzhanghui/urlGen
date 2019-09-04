@@ -35,7 +35,9 @@ class Logger
     }
 
     public static function close() {
-        fclose(self::$handler);
-        self::$handler = null;
+        if (is_resource(self::$handler)) {
+            fclose(self::$handler);
+            self::$handler = null;
+        }
     }
 }
