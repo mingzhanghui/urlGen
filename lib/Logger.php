@@ -11,7 +11,7 @@ class Logger
     /** @var resource */
     protected static $handler = null;
 
-    private function init() {
+    private static function init() {
         $logDir = dirname(dirname(__FILE__)).'/log';
         if (!is_dir($logDir)) {
             mkdir($logDir, 0777, true);

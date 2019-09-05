@@ -1,10 +1,10 @@
 <?php
 
-function __autoload($className) {
-    include dirname(__FILE__).'/lib/'.$className.'.php';
-}
-
 error_reporting(E_ALL);
+
+include './lib/Curl.php';
+include './lib/File.php';
+include './lib/Response.php';
 
 $path = dirname(__FILE__).'/data/hosts.txt';
 $outPath = dirname(__FILE__).'/data/short.txt';
@@ -21,7 +21,7 @@ File::forEachRow($path, function($line) use ($out, $log) {
         return 2;
     }
 
-    printf("HOST=[%s]\tURL=[%s]\n", $line, $url);
+    // printf("HOST=[%s]\tURL=[%s]\n", $line, $url);
     $html = Curl::testURL($url);
     $html = preg_replace('/charset=gb2312/', 'charset=UTF8', $html);
     // $enc = mb_detect_encoding($html);
@@ -36,7 +36,7 @@ File::forEachRow($path, function($line) use ($out, $log) {
 
     try {
         $shortURL = Curl::shortURL($url);
-        printf("%s => %s\r\n", $url, $shortURL);
+        // printf("%s => %s\r\n", $url, $shortURL);
         fwrite($out, sprintf("%s\n", $shortURL));
     } catch (Exception $e) {
         fwrite($log, sprintf("[%s] %d: %s\n",

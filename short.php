@@ -1,8 +1,12 @@
 <?php
 
-function __autoload($className) {
-    include dirname(__FILE__).'/lib/'.$className.'.php';
-}
+include './lib/File.php';
+include "./lib/Curl.php";
+include "./lib/Logger.php";
+include "./lib/Response.php";
+
+$inputPath = dirname(__FILE__).'/data/hosts.txt';
+
 header('Content-Type: application/json; charset=UTF8');
 
 // php -S 0.0.0.0:8064
@@ -30,15 +34,27 @@ if (!$handle) {
 }
 
 try {
-    $html = Curl::testURL($url);
-    $html = preg_replace('/charset=gb2312/', 'charset=UTF8', $html);
-    // $enc = mb_detect_encoding($html);
-    $html = iconv('gbk', 'utf-8', $html);
-    preg_match('/存在安全风险，为了保障您的安全，已帮你拦截。/', $html, $matches);
-    if (empty($matches)) {
-        // Response::success('OK', $url);
-    } else {
-        Response::fail(sprintf("网站%s被封啦", $url), 403);
+    define('MAX_TRIAL', 10);
+    // 已经尝试次数
+    $trial = 0;
+    // 网页匹配到的内容
+    $matches = array();
+
+    do {
+        $html = Curl::testURL($url);
+        $html = preg_replace('/charset=gb2312/', 'charset=UTF8', $html);
+        // $enc = mb_detect_encoding($html);
+        $html = iconv('gbk', 'utf-8', $html);
+        preg_match('/存在安全风险，为了保障您的安全，已帮你拦截。/', $html, $matches);
+        if (!empty($matches)) {
+            Logger::write(sprintf("[403]\t网站%s被封啦", $url));
+            $url = File::getRandomLine($inputPath);
+            $trial += 1;
+        }
+    } while (!empty($matches) && $trial < MAX_TRIAL);
+
+    if ($trial >= MAX_TRIAL) {
+        Response::fail("列表中的链接都被封了", 403);
     }
 
 } catch (Exception $e) {
