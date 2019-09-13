@@ -11,6 +11,8 @@ class Logger
     /** @var resource */
     protected static $handler = null;
 
+    const MAX_LOG_SIZE = 1048576;
+
     private static function init() {
         $logDir = dirname(dirname(__FILE__)).'/log';
         if (!is_dir($logDir)) {
@@ -21,16 +23,17 @@ class Logger
             self::$handler = fopen($logPath, 'a');
         }
         $stat = fstat(self::$handler);
-        if ($stat['size'] > 1048576) {
-            rename($logPath, $logDir.'/out.archive.log');
+        if ($stat['size'] > self::MAX_LOG_SIZE) {
+            copy($logPath, $logDir.'/out.archive.log');
             ftruncate(self::$handler, 0);
-            fclose(self::$handler);
-            self::$handler = fopen($logPath, 'a');
+            rewind(self::$handler);
         }
     }
 
     public static function write($msg) {
         self::init();
+        // datetime
+        $msg = sprintf("[%s] %s\n", date("Y-m-d H:i:s", time()), $msg);
         fwrite(self::$handler, $msg, strlen($msg));
     }
 

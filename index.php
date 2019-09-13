@@ -5,6 +5,7 @@ error_reporting(E_ALL);
 include './lib/Curl.php';
 include './lib/File.php';
 include './lib/Response.php';
+include './lib/Logger.php';
 
 $path = dirname(__FILE__).'/data/hosts.txt';
 $outPath = dirname(__FILE__).'/data/short.txt';
@@ -29,14 +30,14 @@ File::forEachRow($path, function($line) use ($out, $log) {
     preg_match('/存在安全风险，为了保障您的安全，已帮你拦截。/', $html, $matches);
     if (!empty($matches)) {
         var_dump($matches);
-        fwrite($log, sprintf("[%s] %d: %s\n",
-            $url, 403, '网站被封了'));
+        Logger::write(sprintf("[%s] %d: %s\n", $url, 403, '网站被封了'));
         return 1;
     }
 
     try {
         $shortURL = Curl::shortURL($url);
-        // printf("%s => %s\r\n", $url, $shortURL);
+        Logger::write(sprintf("%s => %s\r\n", $url, $shortURL));
+        
         fwrite($out, sprintf("%s\n", $shortURL));
     } catch (Exception $e) {
         fwrite($log, sprintf("[%s] %d: %s\n",

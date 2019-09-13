@@ -1,2 +1,5 @@
 .idea/*
 *~
+data/short.txt
+log/*
+.DS_Store
